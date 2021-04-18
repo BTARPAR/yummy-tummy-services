@@ -32,7 +32,7 @@ export const signUpUser = (req, res) => {
                 ...rest
             })
 
-            newUser.save((err, user) => {
+            newUser.save((err) => {
                 if (err) {
                     res.send(err)
                 }
@@ -45,9 +45,7 @@ export const signUpUser = (req, res) => {
 }
 
 export const userLogin = (req, res) => {
-    // const {password, email} = req.body
-    const email = 'test@test.com'
-    const password = 'BHARGAV9228393389'
+    const {password, email} = req.body
     User.find({email}, (err, user) => {
         if (err) {
             return res.send(err)
@@ -71,7 +69,7 @@ export const userLogin = (req, res) => {
                 })
 
                 res.cookie('token', token, {
-                    expires: new Date(Date.now() + 60*60*1000),
+                    expires: new Date(Date.now() + 60 * 60 * 1000),
                     secure: false, // set to true if your using https
                     httpOnly: true,
                 })

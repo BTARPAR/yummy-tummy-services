@@ -1,7 +1,5 @@
 import express from 'express';
 import {
-    addNewContact,
-    getContacts,
     getContactByID,
     updateContact,
     deleteContact
@@ -26,7 +24,8 @@ Router.route('/signup')
 
 Router.route('/login')
     // POST : Create new Contact
-    .get(userLogin)
+    // .get(userLogin)
+    .post(userLogin)
 
 Router.route('/logout')
     // UPDATE Contact By ID
