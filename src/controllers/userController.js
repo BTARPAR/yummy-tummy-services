@@ -50,7 +50,6 @@ export const userLogin = (req, res) => {
         if (err) {
             return res.send(err)
         }
-        console.log({user})
         if (!user.length) {
             return res.status(401).json({
                 message: 'Unauthorized'
@@ -59,7 +58,6 @@ export const userLogin = (req, res) => {
         const {email, password: userPassword, _id} = user[0]
 
         bcrypt.compare(password, userPassword, (err, result) => {
-            console.log({result})
             if (result) {
                 const token = jwt.sign({
                     email,
@@ -71,7 +69,7 @@ export const userLogin = (req, res) => {
                 res.cookie('token', token, {
                     expires: new Date(Date.now() + 60 * 60 * 1000),
                     secure: false, // set to true if your using https
-                    httpOnly: true,
+                    httpOnly: true
                 })
                 return res.status(201).send()
             }

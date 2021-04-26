@@ -3194,6 +3194,16 @@
   dependencies:
     "homedir-polyfill" "^1.0.1"
 
+"express-mongo-sanitize@^2.0.2":
+  "integrity" "sha512-JKdeb6EBW++5Uo4F5Ed66p3FSjqNfqc65WrO2H6iWJjyI+IYb4pWq6HjFho/8p95t7ccjr9aBz8QQszeLM/bcQ=="
+  "resolved" "https://registry.npmjs.org/express-mongo-sanitize/-/express-mongo-sanitize-2.0.2.tgz"
+  "version" "2.0.2"
+
+"express-rate-limit@^5.2.6":
+  "integrity" "sha512-nE96xaxGfxiS5jP3tD3kIW1Jg9yQgX0rXCs3rCkZtmbWHEGyotwaezkLj7bnB41Z0uaOLM8W4AX6qHao4IZ2YA=="
+  "resolved" "https://registry.npmjs.org/express-rate-limit/-/express-rate-limit-5.2.6.tgz"
+  "version" "5.2.6"
+
 "express@^4.17.1":
   "integrity" "sha512-mHJ9O79RqluphRrcw2X/GTh3k9tVv8YcoyY4Kkh4WDMUYKRZUq0h1o0w2rrrxBqM7VoeUVqgb27xlEMXTnYt4g=="
   "resolved" "https://registry.npmjs.org/express/-/express-4.17.1.tgz"
@@ -3731,6 +3741,11 @@
   dependencies:
     "inherits" "^2.0.3"
     "minimalistic-assert" "^1.0.1"
+
+"helmet@^4.5.0":
+  "integrity" "sha512-GfxdTaKarneWOpxmiVb/1YsY+fIwDOxVUGrvNEM1MC8W6Z2PREfkXiWF4XHQdvkyXwUTHuY4DRwB0uH/Q6BVyQ=="
+  "resolved" "https://registry.npmjs.org/helmet/-/helmet-4.5.0.tgz"
+  "version" "4.5.0"
 
 "hmac-drbg@^1.0.1":
   "integrity" "sha1-0nRXAQJabHdabFRXk+1QL8DGSaE="
@@ -6558,6 +6573,18 @@
   "integrity" "sha512-PSNhEJDejZYV7h50BohL09Er9VaIefr2LMAf3OEmpCkjOi34eYyQYAXUTjEQtZJTKcF0E2UKTh+osDLsgNim9Q=="
   "resolved" "https://registry.npmjs.org/xdg-basedir/-/xdg-basedir-4.0.0.tgz"
   "version" "4.0.0"
+
+"xss-clean@^0.1.1":
+  "integrity" "sha1-07poTYXM1SBUlj0BrWqzbWYtsaU="
+  "resolved" "https://registry.npmjs.org/xss-clean/-/xss-clean-0.1.1.tgz"
+  "version" "0.1.1"
+  dependencies:
+    "xss-filters" "1.2.6"
+
+"xss-filters@1.2.6":
+  "integrity" "sha1-aLOQicsd/4udvIiUhIObL1B/XFU="
+  "resolved" "https://registry.npmjs.org/xss-filters/-/xss-filters-1.2.6.tgz"
+  "version" "1.2.6"
 
 "xtend@^4.0.0", "xtend@~4.0.1":
   "integrity" "sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ=="

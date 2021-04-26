@@ -1,11 +1,11 @@
 import express from 'express';
 import {
-    getContactByID,
     updateContact,
     deleteContact
 } from '../controllers/demoController'
 import {signUpUser, userLogin} from "../controllers/userController";
 import checkAuth from "../middleware/checkAuth";
+import {getAllData, getOrder, updateOrder} from "../controllers/orderController";
 
 const Router = express.Router()
 
@@ -31,12 +31,18 @@ Router.route('/logout')
     // UPDATE Contact By ID
     .post(updateContact)
 
-Router.route('/data')
+Router.route('/getOrders')
     // GET Contact By ID
-    .get(checkAuth, getContactByID)
+    .get(checkAuth, getAllData)
     // UPDATE Contact By ID
-    .put(updateContact)
+    .put(checkAuth, updateContact)
     // DELETE Contact by ID
     .delete(deleteContact)
+
+Router.route('/getOrder')
+    // GET order By ID
+    .get(checkAuth, getOrder)
+    .post(checkAuth, updateOrder)
+
 
 module.exports = Router
