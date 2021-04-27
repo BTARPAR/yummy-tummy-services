@@ -46,6 +46,7 @@ app.use(express.json({limit: '10kb'})) // body limit is 10kb
 app.use(xss())
 app.use(helmet())
 app.use('/signup/', limit)
+app.use('/placeOrder/', limit)
 app.use('/', demoRoutes)
 
 app.listen(PORT, () => {

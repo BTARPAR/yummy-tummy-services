@@ -6,6 +6,7 @@ export const OrderSchema = new Schema({
     _id: Schema.Types.ObjectId,
     order_no: {
         type: String,
+        unique: true
     },
     customer_info: {
         "address": {

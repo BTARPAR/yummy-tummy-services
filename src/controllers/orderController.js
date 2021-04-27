@@ -33,3 +33,24 @@ export const updateOrder = (req, res) => {
         res.json(foundOrder)
     })
 }
+
+export const addOrder = (req, res) => {
+    const {_id, ...rest} = req.body
+    Orders.findOneAndUpdate({_id: req.query.id}, rest, {returnNewDocument: true}, (err, foundOrder) => {
+
+        if (err) {
+            res.send(err)
+        }
+
+        res.json(foundOrder)
+    })
+}
+
+export const searchOrder = (req, res) => {
+    Orders.find({order_no: req.query.id}, (err, movies) => {
+        if (err) {
+            res.send(err)
+        }
+        res.json(movies)
+    })
+}

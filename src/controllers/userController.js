@@ -81,3 +81,7 @@ export const userLogin = (req, res) => {
         })
     })
 }
+
+export const logoutUser = (req, res) => {
+    res.clearCookie('token').send()
+}

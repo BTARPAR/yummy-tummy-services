@@ -1,11 +1,11 @@
 import express from 'express';
 import {
-    updateContact,
     deleteContact
 } from '../controllers/demoController'
-import {signUpUser, userLogin} from "../controllers/userController";
+import {signUpUser, userLogin, logoutUser} from "../controllers/userController";
 import checkAuth from "../middleware/checkAuth";
-import {getAllData, getOrder, updateOrder} from "../controllers/orderController";
+import {getAllData, getOrder, updateOrder, addOrder, searchOrder} from "../controllers/orderController";
+import {placeOrder} from "../controllers/placeOrderController";
 
 const Router = express.Router()
 
@@ -29,20 +29,25 @@ Router.route('/login')
 
 Router.route('/logout')
     // UPDATE Contact By ID
-    .post(updateContact)
+    .post(logoutUser)
 
 Router.route('/getOrders')
     // GET Contact By ID
     .get(checkAuth, getAllData)
     // UPDATE Contact By ID
-    .put(checkAuth, updateContact)
+    .put(checkAuth, addOrder)
     // DELETE Contact by ID
-    .delete(deleteContact)
+    .delete(checkAuth, deleteContact)
 
 Router.route('/getOrder')
     // GET order By ID
     .get(checkAuth, getOrder)
     .post(checkAuth, updateOrder)
+Router.route('/search')
+    // GET order By ID
+    .get(checkAuth, searchOrder)
+Router.route('/placeOrder')
+    .post(placeOrder)
 
 
 module.exports = Router
