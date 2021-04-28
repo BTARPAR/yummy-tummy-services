@@ -1,9 +1,7 @@
 import express from 'express';
-import {
-    deleteContact
-} from '../controllers/demoController'
+
 import {signUpUser, userLogin, logoutUser} from "../controllers/userController";
-import checkAuth from "../middleware/checkAuth";
+import {checkAuth} from "../middleware/checkAuth";
 import {getAllData, getOrder, updateOrder, addOrder, searchOrder} from "../controllers/orderController";
 import {placeOrder} from "../controllers/placeOrderController";
 import {getStatistics} from "../controllers/statisticsController";
@@ -37,8 +35,6 @@ Router.route('/getOrders')
     .get(checkAuth, getAllData)
     // UPDATE Contact By ID
     .put(checkAuth, addOrder)
-    // DELETE Contact by ID
-    .delete(checkAuth, deleteContact)
 
 Router.route('/getOrder')
     // GET order By ID
@@ -53,4 +49,4 @@ Router.route('/statistics')
     .get(checkAuth, getStatistics)
 
 
-module.exports = Router
+export default Router

@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 
-module.exports = (req, res, next) => {
+export const checkAuth = (req, res, next) => {
     try {
         const token = req.headers.cookie.split('=')[1]
         const decoded = jwt.verify(token, 'secrete')
