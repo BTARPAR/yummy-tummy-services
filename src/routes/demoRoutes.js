@@ -5,6 +5,7 @@ import {checkAuth} from "../middleware/checkAuth";
 import {getAllData, getOrder, updateOrder, addOrder, searchOrder} from "../controllers/orderController";
 import {placeOrder} from "../controllers/placeOrderController";
 import {getStatistics} from "../controllers/statisticsController";
+import {getAllRestaurants} from "../controllers/restaurentController";
 
 const Router = express.Router()
 
@@ -47,6 +48,8 @@ Router.route('/placeOrder')
     .post(placeOrder)
 Router.route('/statistics')
     .get(checkAuth, getStatistics)
+Router.route('/resturants')
+    .get(getAllRestaurants)
 
 
 export default Router
