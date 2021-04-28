@@ -5,11 +5,11 @@ import {OrderSchema} from '../models/orderModel'
 const Orders = mongoose.model('Orders', OrderSchema, 'orders')
 
 export const getAllData = (req, res) => {
-    Orders.find({}, (err, movies) => {
+    Orders.find({}, (err, orders) => {
         if (err) {
             res.send(err)
         }
-        res.json(movies)
+        res.json(orders)
     })
 }
 

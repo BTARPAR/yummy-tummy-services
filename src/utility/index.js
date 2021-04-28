@@ -41,7 +41,7 @@ export const generateOrder = (serveFor) => {
         acc.push(data)
         return acc
     }, [])
-    return {total: total.toFixed(2), selected_items}
+    return {total, selected_items}
 }
 
 export const generateDate = () => {

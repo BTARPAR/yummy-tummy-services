@@ -3,17 +3,33 @@ import mongoose from 'mongoose'
 import {OrderSchema} from '../models/orderModel'
 import {generateDate, generateOrder} from "../utility";
 import {RestaurantSchema} from "../models/restaurantModel";
-import {increaseRevenueCounter} from "./statisticsController";
 
 const Order = mongoose.model('Orders', OrderSchema, 'orders')
 const Restaurants = mongoose.model('Restaurants', RestaurantSchema, 'restaurants')
 
-export const placeOrder = (req, res) => {
+let ORDER_NO = 0
+
+export const placeOrder = async (req, res) => {
     const {
         address: customerDetails, name,
         phonenumber, noOfPeople, restaurant_id
     } = req.body
     const {total, selected_items} = generateOrder(noOfPeople)
+
+    const generateOrderNo = async () => {
+        if (!ORDER_NO) {
+            const getAllOrders = await Order.find({}).sort({_id: -1}).limit(1)
+            if (!getAllOrders.length) {
+                ORDER_NO = 100
+            } else {
+                ORDER_NO = getAllOrders[0].order_no
+            }
+            return ORDER_NO + 1
+        } else {
+            return ORDER_NO + 1
+        }
+    }
+
 
     const incomingOrder = {
         _id: mongoose.Types.ObjectId(),
@@ -25,7 +41,8 @@ export const placeOrder = (req, res) => {
             phone_number: phonenumber,
             name
         },
-        total: '$' + total,
+        total,
+        order_no: await generateOrderNo(),
         selected_items,
         date: generateDate()
     }
@@ -39,7 +56,7 @@ export const placeOrder = (req, res) => {
             if (err) {
                 res.send(err)
             }
-            // increaseRevenueCounter(req, res)
+            ORDER_NO++
             res.status(201).json({
                 message: 'Order Placed'
             })

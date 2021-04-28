@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 
 import {UserSchema} from '../models/userModel'
 
-const User = mongoose.model('User', UserSchema)
+const User = mongoose.model('User', UserSchema, 'users')
 
 export const signUpUser = (req, res) => {
     const {password, email, ...rest} = req.body

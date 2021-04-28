@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 export const OrderSchema = new Schema({
     _id: Schema.Types.ObjectId,
     order_no: {
-        type: String,
+        type: Number,
         unique: true
     },
     customer_info: {
@@ -41,7 +41,7 @@ export const OrderSchema = new Schema({
         }
     ],
     total: {
-        type: String
+        type: Number
     },
     date: {
         type: String,

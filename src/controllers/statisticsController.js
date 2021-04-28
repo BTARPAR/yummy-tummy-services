@@ -1,44 +1,38 @@
-import mongoose from "mongoose";
-import {StatisticsSchema} from "../models/statsticsModel";
+import mongoose from 'mongoose'
 
-const Statistics = mongoose.model('Statistics', StatisticsSchema, 'statistics')
+import {OrderSchema} from '../models/orderModel'
 
+const Orders = mongoose.model('Orders', OrderSchema, 'orders')
 
-export const increaseRevenueCounter = (req, res) => {
-    Statistics.findByIdAndUpdate('tummy_yummy', {
-            total_orders: 0,
-            $inc: {total_orders: 1,}
-        },
+export const getStatistics = (req, res) => {
+    Orders.aggregate([
         {
-            upsert: true
-        }, (err, update) => {
-            if (err) {
-                res.sendStatus('304').json({
-                    message: 'not increased'
-                })
+            $group: {
+                _id: null,
+                total: {
+                    $sum: "$total"
+                },
+                count: {
+                    $sum: 1
+                },
+
+            },
+        }
+    ], (err, order) => {
+        if (err) return res.send(err)
+        Orders.aggregate([
+            {
+                $group: {
+                    _id: "$customer_info.phone_number",
+                    count: {
+                        $sum: 1
+                    },
+
+                },
             }
-        }
-    )
-}
-
-export const increaseRestaurantCounter = () => {
-    Statistics.findByIdAndUpdate('tummy_yummy', {
-            available_restaurants: 0,
-            $inc: {available_restaurants: 1,}
-        },
-        {
-            upsert: true
-        }
-    )
-}
-
-export const increaseUsersCounter = () => {
-    Statistics.findByIdAndUpdate('tummy_yummy', {
-            total_users: 0,
-            $inc: {total_users: 1,}
-        },
-        {
-            upsert: true
-        }
-    )
+        ], (err, users) => {
+            if (err) return res.send(err)
+            res.json({revenue: order[0].total, orders: order[0].count, users: users.length})
+        })
+    })
 }
