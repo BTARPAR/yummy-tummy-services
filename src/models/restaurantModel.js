@@ -3,7 +3,6 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 export const RestaurantSchema = new Schema({
-    _id: new mongoose.Schema.Types.ObjectId,
     address: {
         street: String,
         zipCode: String,

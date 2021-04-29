@@ -3,7 +3,6 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 export const UserSchema = new Schema({
-    _id: new mongoose.Schema.Types.ObjectId,
     firstName: {
         type: String,
         required: 'Enter First Name'
