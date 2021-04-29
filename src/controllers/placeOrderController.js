@@ -32,7 +32,7 @@ export const placeOrder = async (req, res) => {
 
 
     const incomingOrder = {
-        _id: mongoose.Types.ObjectId()(),
+        _id: new mongoose.Schema.Types.ObjectId(),
         customer_info: {
             address: {
                 ...customerDetails,

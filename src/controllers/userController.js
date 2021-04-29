@@ -26,7 +26,7 @@ export const signUpUser = (req, res) => {
                 })
             }
             const newUser = new User({
-                _id: mongoose.Types.ObjectId()(),
+                _id: new mongoose.Schema.Types.ObjectId(),
                 password: hash,
                 email,
                 ...rest
