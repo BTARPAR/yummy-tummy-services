@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 export const OrderSchema = new Schema({
-    _id: mongoose.Types.ObjectId,
+    _id: mongoose.Schema.ObjectId,
     order_no: {
         type: Number,
         unique: true
