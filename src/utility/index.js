@@ -31,12 +31,14 @@ export const generateOrder = (serveFor) => {
     const selected_items = items.reduce((acc, curr) => {
         const newPrice = Number(generateRandomNumber(40))
         total += newPrice
+        const price = newPrice
+        const quantity = generateRandomNumber(serveFor)
         const data = {
             item_name: curr,
-            price: newPrice.toFixed(2),
-            quantity: generateRandomNumber(serveFor),
+            quantity,
             foodType: foodType(),
-            spiceLevel: spiceLevel()
+            spiceLevel: spiceLevel(),
+            item_price: price / quantity
         }
         acc.push(data)
         return acc

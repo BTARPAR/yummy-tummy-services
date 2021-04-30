@@ -31,10 +31,9 @@ export const OrderSchema = new Schema({
     },
     selected_items: [
         {
-            _id: Schema.Types.ObjectId,
             item_name: String,
-            price: String,
             quantity: String,
+            item_price: Number,
             foodType: String,
             spiceLevel: String
         }
