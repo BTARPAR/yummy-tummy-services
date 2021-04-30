@@ -28,8 +28,8 @@ app.use(bodyParser.json())
 // }
 //INCOMING DOMAIN LIST HEAR
 // app.use(cors({ origin: 'http://localhost:8080' , credentials :  true}))
-// app.use(cors({ origin: 'https://y-tummy.netlify.app' , credentials :  true}))
-app.options(cors());
+app.use(cors({ origin: 'https://y-tummy.netlify.app' , credentials :  true}))
+// app.options(cors());
 
 //=======================
 //      O W A S P
