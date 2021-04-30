@@ -67,8 +67,9 @@ export const userLogin = (req, res) => {
 
                 res.cookie('token', token, {
                     expires: new Date(Date.now() + 60 * 60 * 1000),
-                    secure: false, // set to true if your using https
-                    httpOnly: true
+                    secure: true, // set to true if your using https
+                    httpOnly: true,
+                    sameSite: 'none'
                 })
                 return res.status(201).send()
             }
