@@ -32,7 +32,12 @@ export const getStatistics = async (req, res) => {
             }
         ], (err, users) => {
             if (err) return res.send(err)
-            res.json({revenue: order[0].total, orders: order[0].count, users: users.length})
+            
+            if (!order.length) {
+                res.json({revenue: 0, orders: 0, users: 0})
+            } else {
+                res.json({revenue: order[0].total, orders: order[0].count, users: users.length})
+            }
         })
     })
 }

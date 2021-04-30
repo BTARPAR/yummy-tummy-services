@@ -23,15 +23,31 @@ export const getOrder = (req, res) => {
 }
 
 export const updateOrder = (req, res) => {
-    const {_id, ...rest} = req.body
-    Orders.findOneAndUpdate({_id: req.query.id}, rest, {returnNewDocument: true}, (err, foundOrder) => {
+    const {_id, selected_items, ...body} = req.body
+    const updateTotal = selected_items.reduce((acc, curr) => {
+        acc += curr.quantity * curr.item_price
+        return acc
+    }, 0)
+    const rest = {...body, total: updateTotal}
+    if (selected_items.length === 0) {
+        Orders.findOneAndDelete({_id: req.query.id}, (err) => {
 
-        if (err) {
-            res.send(err)
-        }
+            if (err) {
+                res.send(err)
+            }
 
-        res.json(foundOrder)
-    })
+            res.status(204).send()
+        })
+    } else {
+        Orders.findOneAndUpdate({_id: req.query.id}, rest, {returnNewDocument: true}, (err, foundOrder) => {
+
+            if (err) {
+                res.send(err)
+            }
+
+            res.json(foundOrder)
+        })
+    }
 }
 
 export const addOrder = (req, res) => {
