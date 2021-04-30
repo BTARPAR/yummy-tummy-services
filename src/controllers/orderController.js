@@ -36,7 +36,7 @@ export const updateOrder = (req, res) => {
                 res.send(err)
             }
 
-            res.status(204).send()
+          return res.status(204).json({message: "DELETED"})
         })
     } else {
         Orders.findOneAndUpdate({_id: req.query.id}, rest, {returnNewDocument: true}, (err, foundOrder) => {
@@ -45,7 +45,7 @@ export const updateOrder = (req, res) => {
                 res.send(err)
             }
 
-            res.json(foundOrder)
+           return res.json(foundOrder)
         })
     }
 }
