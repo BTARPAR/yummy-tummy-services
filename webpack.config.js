@@ -1,5 +1,4 @@
 const path = require('path')
-const webpack = require('webpack')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
 const webpackConfig = ({
@@ -8,12 +7,7 @@ const webpackConfig = ({
     entry: './index.js',
     target: 'node',
     plugins: [
-        new CleanWebpackPlugin(),
-        new webpack.DefinePlugin({
-            'process.env':{
-                PROD_MODE: mode === 'production'
-            }
-        })
+        new CleanWebpackPlugin()
     ],
     output: {
         path: path.resolve(__dirname, 'dist'),
