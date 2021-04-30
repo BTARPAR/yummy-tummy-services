@@ -28,7 +28,7 @@ app.use(bodyParser.json())
 // }
 //INCOMING DOMAIN LIST HEAR
 // app.use(cors({ origin: 'http://localhost:8080' , credentials :  true}))
-app.use(cors({ origin: 'https://y-tummy.netlify.app' , credentials :  true}))
+// app.use(cors({ origin: 'https://y-tummy.netlify.app' , credentials :  true}))
 // app.options(cors());
 
 //=======================
@@ -51,5 +51,5 @@ app.use('/placeOrder/', limit)
 app.use('/', demoRoutes)
 
 app.listen(PORT, () => {
-    console.log('Your Server is UP')
+    console.log(`Your Server is UP on ${PORT}`)
 })
