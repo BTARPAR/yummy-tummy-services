@@ -25,10 +25,7 @@ Router.route('/signup')
 Router.route('/login')
     // POST : Create new Contact
     // .get(userLogin)
-    .post((req, res, next)=>{
-        console.log({req})
-        next()
-    },userLogin)
+    .post(userLogin)
 
 Router.route('/logout')
     // UPDATE Contact By ID

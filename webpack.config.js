@@ -1,11 +1,19 @@
 const path = require('path')
+const webpack = require('webpack')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
-const webpackConfig = {
+const webpackConfig = ({
+  mode = 'development'
+}, argv)=>  ({
     entry: './index.js',
     target: 'node',
     plugins: [
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        new webpack.DefinePlugin({
+            'process.env':{
+                PROD_MODE: mode === 'production'
+            }
+        })
     ],
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -26,6 +34,6 @@ const webpackConfig = {
     resolve: {
         extensions: ['.js']
     }
-}
+})
 
 module.exports = webpackConfig
