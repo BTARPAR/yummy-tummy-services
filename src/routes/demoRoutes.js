@@ -25,8 +25,9 @@ Router.route('/signup')
 Router.route('/login')
     // POST : Create new Contact
     // .get(userLogin)
-    .post((req)=>{
+    .post((req, res, next)=>{
         console.log({req})
+        next()
     },userLogin)
 
 Router.route('/logout')
