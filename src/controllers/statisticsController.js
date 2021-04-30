@@ -4,8 +4,8 @@ import {OrderSchema} from '../models/orderModel'
 
 const Orders = mongoose.model('Orders', OrderSchema, 'orders')
 
-export const getStatistics = (req, res) => {
-    Orders.aggregate([
+export const getStatistics = async (req, res) => {
+    await Orders.aggregate([
         {
             $group: {
                 _id: null,
