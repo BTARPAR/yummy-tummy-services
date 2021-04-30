@@ -28,7 +28,7 @@ export const updateOrder = (req, res) => {
         acc += curr.quantity * curr.item_price
         return acc
     }, 0)
-    const rest = {...body, total: updateTotal}
+    const rest = {...body, total: updateTotal, selected_items}
     if (selected_items.length === 0) {
         Orders.findOneAndDelete({_id: req.query.id}, (err) => {
 
