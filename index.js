@@ -9,7 +9,6 @@ import xss from 'xss-clean'
 import helmet from 'helmet'
 
 const app = express()
-console.log({process})
 const PORT = process.env.PORT || 4000
 
 // mongoose connection
